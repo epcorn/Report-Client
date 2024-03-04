@@ -263,10 +263,10 @@ const NewReport = () => {
                       type="submit"
                       disabled={
                         !reportName ||
-                        !file ||
-                        !inspectionDate ||
-                        !shownTo ||
-                        !meetTo
+                          !file ||
+                          !inspectionDate ||
+                          !shownTo ||
+                          !meetTo
                           ? true
                           : false
                       }
@@ -392,10 +392,10 @@ const NewReport = () => {
                           type="submit"
                           disabled={
                             !reportName ||
-                            !file ||
-                            !inspectionDate ||
-                            !shownTo ||
-                            !meetTo
+                              !file ||
+                              !inspectionDate ||
+                              !shownTo ||
+                              !meetTo
                               ? true
                               : false
                           }
@@ -504,10 +504,10 @@ const NewReport = () => {
                 type="submit"
                 disabled={
                   !templateType ||
-                  !reportType ||
-                  !meetTo ||
-                  !inspectionDate ||
-                  !shownTo
+                    !reportType ||
+                    !meetTo ||
+                    !inspectionDate ||
+                    !shownTo
                     ? true
                     : false
                 }

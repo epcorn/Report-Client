@@ -1,5 +1,5 @@
 import check from "../images/check1.png";
-
+import BillToShipToInfo from "./BillToShipToInfo";
 const Table = ({
   user,
   th1,
@@ -28,116 +28,118 @@ const Table = ({
       <tbody>
         {user === "Admin" || user === "Back Office"
           ? data?.map((item) => (
-              <tr key={item._id}>
-                <td>{item.name}</td>
-                <td>{item.role}</td>
-                <td>
-                  {item.role !== "Admin" && (
-                    <button
-                      className="btn btn-danger"
-                      onClick={() => handleButton(item._id)}
-                    >
-                      Remove User
-                    </button>
-                  )}
-                </td>
-              </tr>
-            ))
+            <tr key={item._id}>
+              <td>{item.name}</td>
+              <td>{item.role}</td>
+              <td>
+                {item.role !== "Admin" && (
+                  <button
+                    className="btn btn-danger"
+                    onClick={() => handleButton(item._id)}
+                  >
+                    Remove User
+                  </button>
+                )}
+              </td>
+            </tr>
+          ))
           : data?.map((item, index) => (
-              <tr key={item._id || index}>
-                <td>{item.reportName}</td>
-                <td>{item.inspectionBy}</td>
-                <td className="text-center">
-                  {item.inspectionDate.split("T")[0]}
-                </td>
-                <td>
-                  {item.link ? (
-                    <>
+            <tr key={item._id || index}>
+              <td>
+                <BillToShipToInfo btnText={item.reportName} contract={item.contract} />
+              </td>
+              <td>{item.inspectionBy}</td>
+              <td className="text-center">
+                {item.inspectionDate.split("T")[0]}
+              </td>
+              <td>
+                {item.link ? (
+                  <>
+                    <button
+                      className="btn btn-primary btn-sm me-3"
+                      type="button"
+                      onClick={() =>
+                        handleDownload({
+                          link: item.link,
+                          quotation: item.quotation,
+                        })
+                      }
+                    >
+                      Download
+                    </button>
+                    <label className="me-3">
+                      <input
+                        type="file"
+                        className="upload"
+                        onChange={(e) =>
+                          handleFile(
+                            item._id,
+                            e.target.files[0],
+                            "Upload Report"
+                          )
+                        }
+                      />
+                      <span className="btn btn-warning btn-sm">
+                        Upload Report
+                      </span>
+                    </label>
+                    <label className="me-3">
+                      <input
+                        type="file"
+                        className="upload"
+                        onChange={(e) =>
+                          handleFile(
+                            item._id,
+                            e.target.files[0],
+                            "Upload Quotation"
+                          )
+                        }
+                      />
+                      <span className="btn btn-secondary btn-sm">
+                        Upload Quotation
+                      </span>
+                    </label>
+                    <label className="me-3">
                       <button
-                        className="btn btn-primary btn-sm me-3"
-                        type="button"
-                        onClick={() =>
-                          handleDownload({
-                            link: item.link,
-                            quotation: item.quotation,
-                          })
+                        className="btn btn-danger btn-sm"
+                        onClick={() => handleDelete(item._id)}
+                      >
+                        Delete
+                      </button>
+                    </label>
+                    {item.approved && (
+                      <button
+                        className="btn btn-info btn-sm"
+                        onClick={(e) =>
+                          handleButton(item._id, item.emailList)
                         }
                       >
-                        Download
+                        Send Email
+                        {item.email && (
+                          <img
+                            src={check}
+                            alt="check"
+                            style={{
+                              width: 15,
+                              paddingBottom: 4,
+                              paddingLeft: 2,
+                            }}
+                          />
+                        )}
                       </button>
-                      <label className="me-3">
-                        <input
-                          type="file"
-                          className="upload"
-                          onChange={(e) =>
-                            handleFile(
-                              item._id,
-                              e.target.files[0],
-                              "Upload Report"
-                            )
-                          }
-                        />
-                        <span className="btn btn-warning btn-sm">
-                          Upload Report
-                        </span>
-                      </label>
-                      <label className="me-3">
-                        <input
-                          type="file"
-                          className="upload"
-                          onChange={(e) =>
-                            handleFile(
-                              item._id,
-                              e.target.files[0],
-                              "Upload Quotation"
-                            )
-                          }
-                        />
-                        <span className="btn btn-secondary btn-sm">
-                          Upload Quotation
-                        </span>
-                      </label>
-                      <label className="me-3">
-                        <button
-                          className="btn btn-danger btn-sm"
-                          onClick={() => handleDelete(item._id)}
-                        >
-                          Delete
-                        </button>
-                      </label>
-                      {item.approved && (
-                        <button
-                          className="btn btn-info btn-sm"
-                          onClick={(e) =>
-                            handleButton(item._id, item.emailList)
-                          }
-                        >
-                          Send Email
-                          {item.email && (
-                            <img
-                              src={check}
-                              alt="check"
-                              style={{
-                                width: 15,
-                                paddingBottom: 4,
-                                paddingLeft: 2,
-                              }}
-                            />
-                          )}
-                        </button>
-                      )}
-                    </>
-                  ) : (
-                    <button
-                      className="btn btn-success btn-sm"
-                      onClick={() => handleGenerate(item._id)}
-                    >
-                      Generate Report
-                    </button>
-                  )}
-                </td>
-              </tr>
-            ))}
+                    )}
+                  </>
+                ) : (
+                  <button
+                    className="btn btn-success btn-sm"
+                    onClick={() => handleGenerate(item._id)}
+                  >
+                    Generate Report
+                  </button>
+                )}
+              </td>
+            </tr>
+          ))}
       </tbody>
     </table>
   );

@@ -199,8 +199,30 @@ const reportSlice = createSlice({
     reportHandleChange: (state, { payload: { name, value } }) => {
       state[name] = value;
     },
-    setImageData: (state, payload) => {},
+    setImageData: (state, payload) => { },
+    sortReportsByEmailSend: (state) => {
+      state.reports.sort((a, b) => {
+        if (!a.email && b.email) {
+          return -1;
+        }
+        else if (a.email && !b.email) {
+          return 1;
+        }
+        else {
+          return 0;
+        }
+      });
+    },
+    sortReportsbyCreatedAt: (state) => {
+      state.reports.sort((a, b) => {
+        // Convert strings to Date objects and compare
+        const dateA = new Date(a.createdAt);
+        const dateB = new Date(b.createdAt);
 
+        // Compare dateB with dateA for descending order
+        return dateB - dateA;
+      });
+    },
     mailForm: (state, { payload: { id, emails } }) => {
       state.mailId = id;
       state.emailList = emails;
@@ -363,6 +385,8 @@ export const {
   changePage,
   clearReport,
   createContract,
+  sortReportsByEmailSend,
+  sortReportsbyCreatedAt,
 } = reportSlice.actions;
 
 export default reportSlice.reducer;

@@ -21,6 +21,7 @@ import {
   mailForm,
   reportHandleChange,
   sendEmail,
+  sortReportsByEmailSend,
 } from "../redux/reportSlice";
 import {
   getAllUsers,
@@ -52,6 +53,9 @@ const Dashboard = () => {
     doc: "",
     services: "",
   });
+
+  const [currentPage, setCurrentPage] = useState(1);
+
 
   useEffect(() => {
     dispatch(getAllUsers());
@@ -149,7 +153,7 @@ const Dashboard = () => {
       <div className="row">
         <div className="col-2">
           <button
-            className="btn btn-primary"
+            className={`btn btn-primary ${show === "All Reports" ? "border border-warning border-3" : ""}`}
             onClick={(e) => setShow(e.target.textContent)}
           >
             All Reports
@@ -157,7 +161,7 @@ const Dashboard = () => {
         </div>
         <div className="col-2">
           <button
-            className="btn btn-dark"
+            className={`btn btn-dark ${show === "All Users" ? "border border-warning border-3" : ""}`}
             onClick={(e) => setShow(e.target.textContent)}
           >
             All Users
@@ -165,7 +169,7 @@ const Dashboard = () => {
         </div>
         <div className="col-2">
           <button
-            className="btn btn-primary"
+            className={`btn btn-primary ${show === "Email Data" ? "border border-warning border-3" : ""}`}
             onClick={(e) => setShow(e.target.textContent)}
           >
             Email Data
@@ -173,7 +177,7 @@ const Dashboard = () => {
         </div>
         <div className="col-2">
           <button
-            className="btn btn-dark"
+            className={`btn btn-dark ${show === "Add Template" ? "border border-warning border-3" : ""}`}
             onClick={(e) => setShow(e.target.textContent)}
           >
             Add Template
@@ -247,7 +251,7 @@ const Dashboard = () => {
         )}
         {show === "All Reports" && (
           <div className="col-12">
-            <ReportStats data={reportsStats} />
+            <ReportStats data={reportsStats} sort={sortReportsByEmailSend} />
             <Table
               user={user}
               th1="Report Name"
@@ -266,9 +270,11 @@ const Dashboard = () => {
                 {pages.map((page) => (
                   <li className="page-item" key={page}>
                     <button
-                      className="page-link"
-                      onClick={(e) =>
-                        dispatch(changePage(e.target.textContent))
+                      className={`page-link ${currentPage === page ? "custom-bg-color" : null}`}
+                      onClick={(e) => {
+                        dispatch(changePage(e.target.textContent));
+                        setCurrentPage(page);
+                      }
                       }
                     >
                       {page}
@@ -423,6 +429,7 @@ const Dashboard = () => {
             </form>
           </>
         )}
+
       </div>
     </div>
   );

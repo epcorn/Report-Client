@@ -8,7 +8,7 @@ import ReportStats from "./ReportStats";
 import RIM from "./RIM";
 import SearchContainer from "./SearchContainer";
 import Table from "./Table";
-
+import BillToShipToInfo from "./BillToShipToInfo";
 export {
   InputRow,
   InputSelect,
@@ -20,4 +20,5 @@ export {
   Navbar,
   RIM,
   EmailTable,
+  BillToShipToInfo,
 };

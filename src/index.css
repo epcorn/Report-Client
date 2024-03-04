@@ -22,11 +22,13 @@ code {
 }
 
 @media (max-width: 767px) {
+
   .input-row h4,
   .img {
     font-size: 18px;
     margin-top: 5px;
   }
+
   .input-row .form-control {
     height: 28px;
   }
@@ -34,16 +36,23 @@ code {
 
 .modal {
   display: block;
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
+  position: fixed;
+  /* Stay in place */
+  z-index: 1;
+  /* Sit on top */
   padding-top: 60px;
   left: 0;
   top: 20;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0, 0, 0); /* Fallback color */
-  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+  width: 100%;
+  /* Full width */
+  height: 100%;
+  /* Full height */
+  overflow: auto;
+  /* Enable scroll if needed */
+  background-color: rgb(0, 0, 0);
+  /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4);
+  /* Black w/ opacity */
 }
 
 .modal-content {
@@ -67,29 +76,36 @@ header .header-top {
   border-bottom: 1px solid #d3d7cea6;
   padding: 7px 7px 3px 7px;
 }
+
 header .header-top .col-det .ulleft li {
   float: left;
   padding: 2px;
   color: #686968;
   font-size: 0.9rem;
 }
+
 .follow-li {
   padding-top: 12px !important;
 }
+
 header .header-top .col-det .ulleft li i {
   margin-right: 5px;
   color: #bfbfbf;
 }
+
 header .header-top .col-det .ulleft li span {
   margin-left: 15px;
 }
+
 header .header-top .col-det .ulright {
   float: right;
 }
+
 .ulleft img,
 .ulright img {
   width: 23px;
 }
+
 header .header-top .col-det .ulright li {
   float: left;
   padding: 10px;
@@ -97,23 +113,28 @@ header .header-top .col-det .ulright li {
   font-size: 1rem;
   font-weight: 600;
 }
+
 header .header-top .col-det .ulright li i {
   margin-right: 5px;
   color: #8c8a8a;
 }
+
 header .header-top .col-det .ulright li small,
 header .header-top .col-det .ulleft li small {
   color: #8c8a8a;
   font-weight: 600;
   font-size: 16px;
 }
+
 header .header-top .col-det .ulright li span {
   margin-left: 15px;
 }
+
 header .header-top .btn-bhed {
   padding-top: 7px;
   text-align: center !important;
 }
+
 header .header-top .btn-bhed .btn {
   padding: 5px 23px;
   border-radius: 50px;
@@ -130,6 +151,7 @@ header .header-top .btn-bhed .btn {
 .mobile-nav {
   height: 40px;
 }
+
 .mobile-nav img {
   width: 33px;
   margin-right: 5px;
@@ -160,20 +182,25 @@ header .nav-link:hover {
   header .container {
     padding: 10px 15px;
   }
+
   .navbar-toggler {
     padding-top: 4px;
   }
+
   .navbar-toggler img {
     width: 35px !important;
     margin-right: 25px;
   }
+
   header .logo {
     height: 70px;
     width: 80px;
   }
+
   .navbar {
     padding: 0px !important;
   }
+
   .follows {
     display: none !important;
   }
@@ -183,13 +210,16 @@ header .nav-link:hover {
   .navbar {
     padding: 0px;
   }
+
   .navbar .container {
     margin: 4px;
   }
+
   header .header-top .col-det .ulleft li {
     padding-top: 2px;
     padding-bottom: 2px;
   }
+
   header .header-top .col-det .ulleft li small {
     color: #8c8a8a;
     font-size: 13px;
@@ -204,12 +234,14 @@ header .nav-link:hover {
     font-weight: 500;
     font-size: 12px;
   }
+
   header .header-top .btn-bhed {
     padding: 2px;
     text-align: right;
     display: flex !important;
     justify-content: center !important;
   }
+
   header .header-top .btn-bhed .btn {
     padding: 2px 15px;
     margin-right: 15px;
@@ -217,30 +249,38 @@ header .nav-link:hover {
     margin-left: 1px;
     font-size: 12px;
   }
+
   .logout {
     display: flex;
     justify-content: center;
   }
-  .follows {  
+
+  .follows {
     display: none !important;
   }
+
   .navbar-toggler img {
     width: 20px !important;
     margin-right: 10px;
   }
+
   .navbar-brand {
     height: 10px !important;
   }
+
   header .logo {
     height: 5px !important;
     width: 6px !important;
   }
+
   .navbar-toggler {
     padding-top: 8px !important;
   }
+
   .table td {
     font-size: 12px;
   }
+
   .table th {
     font-size: 14px;
   }
@@ -274,15 +314,21 @@ header .nav-link:hover {
   opacity: 0;
 }
 
+.custom-bg-color {
+  background-color: #CCD3CA;
+}
+
 @media (max-width: 767px) {
   .reports-table th {
     font-size: 11px !important;
     padding: 5px;
   }
+
   .reports-table td {
     font-size: 11px !important;
     padding: 6px;
   }
+
   .reports-table .btn {
     font-size: 12px;
     padding: 1px 7px;
